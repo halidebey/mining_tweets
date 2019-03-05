@@ -23,13 +23,11 @@ class TwitterListener ( StreamListener ):
         tweet = json.loads(data)
 
         username = tweet['user']['screen_name'] 
-        body = tweet['text'] 
+        body     = tweet['text'] 
         hashtags = tweet['entities']['hashtags'] 
-        date = tweet['created_at'] 
+        date     = tweet['created_at'] 
 
-        tweet = {'username':username, 'body':body, 'hashtags':hashtags, 'date':date}
-
-        f.write(username + ':' + ' ' + body + '\n\n')
+        f.write ( data + username + body + hashtags + '\n' )
 
         if count == 2:
             return False
